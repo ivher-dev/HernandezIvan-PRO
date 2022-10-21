@@ -38,6 +38,14 @@ public class Menu {
         for(int i = 0; i < menu.options.length; i++){
             System.out.println(menu.options[i]);
         }
+        System.out.println();
     }
     
+    static int readOption(){
+        int option;;
+        System.out.print("Elige una opción: ");
+        option = reader.nextInt();
+        System.out.println("----------------------------\n");
+        return option;
+    }
 }

@@ -43,7 +43,7 @@ public class App {
                 do{
                     menu = Menu.choose(menus, 0);
                     menu.show(menu);
-                    option = reader.nextInt();
+                    option = Menu.readOption();
                     if (option == 0){
                         continue;
                     }
@@ -51,7 +51,7 @@ public class App {
                         menu = Menu.choose(menus, 1, option);
                         menu.show(menu);
                         // Read option and ifgnore if not 0
-                        option = reader.nextInt() == 0 ? 0 : option;
+                        option = Menu.readOption() == 0 ? 0 : option;
                     } while (!(option == 0 && menu.level == 1));
                 } while (!(option == 0 && menu.level == 0));
                 break;
