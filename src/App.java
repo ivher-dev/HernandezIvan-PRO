@@ -54,6 +54,7 @@ public class App {
                         option = Menu.readOption() == 0 ? 0 : option;
                     } while (!(option == 0 && menu.level == 1));
                 } while (!(option == 0 && menu.level == 0));
+                System.out.println("Cerrando programa...");
                 break;
             } else {
                 Login.loginAttempts++;
