@@ -2,6 +2,18 @@ import java.util.Scanner;
 
 public class Menus {
     static Scanner reader = new Scanner(System.in);
+    String[] options;
+    int role, option, level;
+
+    Menus (int level, int option, String... options){
+        this.options = options;
+        this.level = level;
+        this.option = option;
+    }
+    Menus (int level, String... options){
+        this.options = options;
+        this.level = level;
+    }
 
     static void showMain(){
         int option;
