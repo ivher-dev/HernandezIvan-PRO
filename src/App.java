@@ -14,8 +14,14 @@ public class App {
         }
         
     }
-    
-    static void createAdminMenus(){
+
+    static void defineUsers(){
+        User[] users = new User[2];
+        users[0] = new User("usuario", "usuario", false);
+        users[1] = new User("admin", "admin", true);
+    }
+
+    static void defineAdminMenus(){
         Menus[] menus = new Menus[6];
         menus[0] = new Menus(1,"1.- Administrar películas",
                                                     "2.- Administrar usuarios",
@@ -29,7 +35,7 @@ public class App {
                                                     "0.- Volver");
     }
 
-    static void createUserMenus(){
+    static void defineUserMenus(){
         Menus[] menus = new Menus[6];
         menus[0] = new Menus(1,"1.- Peliculas",
                                                         "2.- Configuración usuario",
