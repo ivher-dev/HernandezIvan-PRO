@@ -19,26 +19,26 @@ public class App {
                 if (user.isAdmin){
                     menus = new Menu[3];
                     menus[0] = new Menu(0,"1.- Administrar películas",
-                                                                "2.- Administrar usuarios",
-                                                                "0.- Salir");
+                                            "2.- Administrar usuarios",
+                                            "0.- Salir");
                     menus[1] = new Menu(1, 1,"1.- Añadir película",
-                                                                "2.- Modificar película",
-                                                                "3.- Borrar película",
-                                                                "0.- Volver");
+                                            "2.- Modificar película",
+                                            "3.- Borrar película",
+                                            "0.- Volver");
                     menus[2] = new Menu(1, 2, "1.- Añadir usuario",
-                                                                "2.- Borrar usuario",
-                                                                "0.- Volver");
+                                            "2.- Borrar usuario",
+                                            "0.- Volver");
                 } else {
                     menus = new Menu[3];
                     menus[0] = new Menu(0,"1.- Peliculas",
-                                                                    "2.- Configuración usuario",
-                                                                    "0.- Salir");
-                    menus[1] = new Menu(1,1,"1.- Peliculas",
-                                                                    "2.- Configuración usuario",
-                                                                    "0.- Salir");
-                    menus[2] = new Menu(1,2,"1.- Casablanca",
-                                                                "2.- El padrino",
-                                                                "0.- Volver");
+                                            "2.- Configuración usuario",
+                                            "0.- Salir");
+                    menus[1] = new Menu(1,1,"1.- Casablanca",
+                                            "2.- El padrino",
+                                            "0.- Volver");
+                    menus[2] = new Menu(1,2,"1.- Cambiar nombre usuario",
+                                            "2.- Cambiar password",
+                                            "0.- Volver");
                 }
                 do{
                     menu = Menu.choose(menus, 0);
