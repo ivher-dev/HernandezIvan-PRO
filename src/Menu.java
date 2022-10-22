@@ -1,51 +1,55 @@
 import java.util.Scanner;
 
-public class Menu {
+class Menu{
     static Scanner reader = new Scanner(System.in);
-    String[] options;
-    int role, option, level;
+    Option[] options;
 
-    Menu (int level, int option, String... options){
+    Menu(Option... options){
         this.options = options;
-        this.level = level;
-        this.option = option;
-    }
-
-    Menu (int level, String... options){
-        this.options = options;
-        this.level = level;
-    }
-
-    static Menu choose(Menu[] menus, int level){
-        for (int i = 0; i < menus.length; i++) {
-            if (menus[i].level == level){
-                return menus[i];
-            }
-        }
-        return null;
-    }
-
-    static Menu choose(Menu[] menus, int level, int option){
-        for (int i = 0; i < menus.length; i++) {
-            if (menus[i].level == level && menus[i].option == option){
-                return menus[i];
-            }
-        }
-        return null;
     }
 
     void show(Menu menu){
-        for(int i = 0; i < menu.options.length; i++){
-            System.out.println(menu.options[i]);
-        }
-        System.out.println();
+        int option = 0;
+        do{
+            for(int i = 0; i < menu.options.length; i++){
+                System.out.println(menu.options[i].number + ".- " + menu.options[i].text);
+            }
+            System.out.println();
+            option = Option.read();
+            for(int i = 0; i < menu.options.length; i++){
+                if (option == menu.options[i].number && menu.options[i].menu != null){
+                    show(menu.options[i].menu);
+                }
+            }
+        } while (option != 0);
     }
-    
-    static int readOption(){
-        int option;;
-        System.out.print("Elige una opción: ");
-        option = reader.nextInt();
-        System.out.println("----------------------------\n");
-        return option;
+    static Menu buildAdmin(){
+        Menu menu = new Menu();
+        menu.options = new Option[3];
+        menu.options[0] = new Option(1,"Administrar peliculas", new Menu(
+            new Option(1,"Agregar pelicula"),
+            new Option(2,"Eliminar pelicula"),
+            new Option(3,"Modificar pelicula"),
+            new Option(0,"Volver")));
+        menu.options[1] = new Option(2,"Administrar usuarios", new Menu(
+            new Option(1,"Añadir usuario"),
+            new Option(2,"Borrar usuario"),
+            new Option(0,"Volver")));
+        menu.options[2] = new Option(0,"Salir");
+        return menu;
+    }
+    static Menu buildUser(){
+        Menu menu = new Menu();
+        menu.options = new Option[3];
+        menu.options[0] = new Option(1,"Películas", new Menu(
+            new Option(1,"Casablanca"),
+            new Option(2,"El padrino"),
+            new Option(0,"Volver")));
+        menu.options[1] = new Option(2,"Configuracion usuario", new Menu(
+            new Option(1,"Cambiar nombre de usuario"),
+            new Option(2,"Cambiar password"),
+            new Option(0,"Volver")));
+        menu.options[2] = new Option(0,"Salir");
+        return menu;
     }
 }
