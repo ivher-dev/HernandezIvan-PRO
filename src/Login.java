@@ -2,8 +2,8 @@ import java.util.Scanner;
 
 public class Login {
     static Scanner reader = new Scanner(System.in);
-    static int loginAttempts = 1;
-    static int loginAttemptsMax = 3;
+    static int attempts = 1;
+    static final int ATTEMPTS_MAX = 3;
     static boolean isAdmin;
     static String[] input(){
         String[] inputUser = new String[2];
@@ -25,9 +25,9 @@ public class Login {
             }
         }
         System.out.println("Usuario y/o contraseña incorecto/s");
-        System.out.println("Intentos restantes: [" + (loginAttemptsMax - loginAttempts) + "/" + loginAttemptsMax + "]");
+        System.out.println("Intentos restantes: [" + (ATTEMPTS_MAX - attempts) + "/" + ATTEMPTS_MAX + "]");
         System.out.println();
-        loginAttempts++;
+        attempts++;
         return null;
     }
 }

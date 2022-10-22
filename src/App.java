@@ -9,7 +9,7 @@ public class App {
         User user = null;
         Menu menu = new Menu();
 
-        while (Login.loginAttempts <= Login.loginAttemptsMax){
+        while (Login.attempts <= Login.ATTEMPTS_MAX){
             user = Login.check(Login.input(), users);
             if (user != null){
                 if (user.isAdmin){
