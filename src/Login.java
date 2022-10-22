@@ -27,6 +27,7 @@ public class Login {
         System.out.println("Usuario y/o contraseña incorecto/s");
         System.out.println("Intentos restantes: [" + (loginAttemptsMax - loginAttempts) + "/" + loginAttemptsMax + "]");
         System.out.println();
+        loginAttempts++;
         return null;
     }
 }

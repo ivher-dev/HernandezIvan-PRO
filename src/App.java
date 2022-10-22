@@ -21,8 +21,6 @@ public class App {
                 menu.show(menu);
                 System.out.println("Cerrando programa...");
                 break;
-            } else {
-                Login.loginAttempts++;
             }
         }
     }
