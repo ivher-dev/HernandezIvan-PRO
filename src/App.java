@@ -19,7 +19,7 @@ public class App {
                     menu = Menu.buildUser();
                 }
                 menu.show(menu);
-                System.out.println("Cerrando programa...");
+                System.out.println("Cerrando programa...\n");
                 break;
             }
         }
