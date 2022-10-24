@@ -27,7 +27,18 @@ class Menu{
         Menu menu = new Menu();
         menu.options = new Option[3];
         menu.options[0] = new Option(1,"Administrar peliculas", new Menu(
-            new Option(1,"Agregar pelicula"),
+            new Option(1,"Agregar pelicula", new Menu(
+                new Option(1,"Agregar pelicula terror"),
+                new Option(2,"Agregar pelicula comedia"),
+                new Option(3,"Agregar pelicula drama"),
+                new Option(4,"Agregar pelicula XXX", new Menu(
+                    new Option(1,"Agregar pelicula XXX 1"),
+                    new Option(2,"Agregar pelicula XXX 2"),
+                    new Option(3,"Agregar pelicula XXX 3"),
+                    new Option(4,"Volver")
+                )),
+                new Option(0,"Volver")
+            )),
             new Option(2,"Eliminar pelicula"),
             new Option(3,"Modificar pelicula"),
             new Option(0,"Volver")));
@@ -43,7 +54,13 @@ class Menu{
         menu.options = new Option[3];
         menu.options[0] = new Option(1,"Películas", new Menu(
             new Option(1,"Casablanca"),
-            new Option(2,"El padrino"),
+            new Option(2,"El señor de los anillos",new Menu(
+                new Option(1,"La comunidad del anillo"),
+                new Option(2,"El retorno del rey"),
+                new Option(3,"Las dos torres"),
+                new Option(4, "Los anillos del poder (serie mala de prime video)"),
+                new Option(0,"Volver")
+            )),
             new Option(0,"Volver")));
         menu.options[1] = new Option(2,"Configuracion usuario", new Menu(
             new Option(1,"Cambiar nombre de usuario"),
