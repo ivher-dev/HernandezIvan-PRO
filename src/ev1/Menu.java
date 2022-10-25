@@ -1,3 +1,4 @@
+package ev1;
 import java.util.Scanner;
 
 class Menu{

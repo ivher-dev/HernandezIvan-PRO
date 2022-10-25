@@ -1,3 +1,4 @@
+package ev1;
 public class User {
     String user, password;
     boolean isAdmin;
