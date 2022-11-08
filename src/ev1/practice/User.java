@@ -1,4 +1,4 @@
-package ev1;
+package ev1.practice;
 public class User {
     String user, password;
     boolean isAdmin;

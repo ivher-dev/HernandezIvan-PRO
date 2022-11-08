@@ -1,4 +1,4 @@
-package ev1;
+package ev1.practice;
 import java.util.Scanner;
 
 public class Option {

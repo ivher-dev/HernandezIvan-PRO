@@ -1,4 +1,4 @@
-package ev1;
+package ev1.practice;
 import java.util.Scanner;
 
 class Menu{
@@ -59,7 +59,6 @@ class Menu{
                 new Option(1,"La comunidad del anillo"),
                 new Option(2,"El retorno del rey"),
                 new Option(3,"Las dos torres"),
-                new Option(4,"Los anillos del poder (serie mala de prime video)"),
                 new Option(0,"Volver")
             )),
             new Option(0,"Volver")));
