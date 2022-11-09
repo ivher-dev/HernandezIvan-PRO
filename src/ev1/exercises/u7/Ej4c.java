@@ -9,7 +9,7 @@ public class Ej4c {
         Scanner reader = new Scanner(System.in);
         int number;
 
-        while (true){
+        while (true) {
             System.out.print("Introduce un numero: ");
             number = reader.nextInt();
             if (number == 0) {
