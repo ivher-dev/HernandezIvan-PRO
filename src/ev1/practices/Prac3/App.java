@@ -9,6 +9,7 @@ public class App {
     static int shipsRemaining;
     static Scanner reader = new Scanner(System.in);
     static int shotsRemaining;
+    static int shotAmount;
 
     public static void main(String[] args) throws Exception {
         System.out.println("#############################################");
@@ -16,27 +17,41 @@ public class App {
         System.out.println("#############################################\n");
         createBoard(requestParameters());
         System.out.println();
+        showShipsRemaining();
+        showShotsRemaining();
+        System.out.println();
         while (shipsRemaining > 0 && shotsRemaining > 0) {
             showBoard();
             System.out.println();
             shoot();
             System.out.println();
             showShipsRemaining();
+            showShotsRemaining();
             System.out.println();
         }
-        System.out.println("You sunk the whole float.");
-    }
-
-    static void showWelcome() {
-        System.out.println("#############################################");
-        System.out.println("######## WELCOMOME TO SEAK THE FLOAT ########");
-        System.out.println("#############################################");
+        if (shipsRemaining == 0) {
+            System.out.println("You sunk the whole float!");
+        } else {
+            System.out.println("You lost all your shots!");
+        }
     }
 
     static void showShipsRemaining() {
-        System.out.print("Barcos hundidos: " + (shipAmount - shipsRemaining) + "/" + shipAmount + " [");
+        System.out.print("Sunk ships: " + (shipAmount - shipsRemaining) + "/" + shipAmount + " [");
         for (var i = 1; i <= (shipAmount); i++) {
             if (i > (shipAmount - shipsRemaining)) {
+                System.out.print("·");
+            } else {
+                System.out.print("#");
+            }
+        }
+        System.out.println("]");
+    }
+
+    static void showShotsRemaining() {
+        System.out.print("Shots remaining: " + shotsRemaining + "/" + shotAmount + " [");
+        for (var i = 1; i <= (shotAmount); i++) {
+            if (i > shotsRemaining) {
                 System.out.print("·");
             } else {
                 System.out.print("#");
@@ -62,7 +77,7 @@ public class App {
             }
         } while (parameters[1] <= 0);
         do {
-            System.out.print("Introduce ship amount: ");
+            System.out.print("Introduce ship amount [1-" + (parameters[0] * parameters[1]) + "]: ");
             parameters[2] = reader.nextInt();
             if (parameters[2] == 0 || parameters[2] > (parameters[0] * parameters[1])) {
                 System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Amount out of range [1-"
@@ -105,6 +120,7 @@ public class App {
         if (shotsRemaining > (parameters[0] * parameters[1])) {
             shotsRemaining = parameters[0] * parameters[1];
         }
+        shotAmount = shotsRemaining;
         while (i < parameters[2]) {
             posX = random.nextInt(0, parameters[0]);
             posY = random.nextInt(0, parameters[1]);
@@ -142,14 +158,12 @@ public class App {
                         System.out.print("· ");
                         break;
                     case 2:
-                        System.out.print("X ");
+                        System.out.print(ConsoleColors.BLUE + "O " + ConsoleColors.RESET);
                         break;
                     case 3:
-                        System.out.print(ConsoleColors.BLUE + "X " + ConsoleColors.RESET);
+                        System.out.print("X ");
                         break;
-
                 }
-
             }
             System.out.println();
         }
@@ -176,17 +190,17 @@ public class App {
         shotsRemaining--;
         switch (game[posY][posX]) {
             case 0:
-                System.out.println("You shot into the water.");
+                System.out.println("\nYou shot into the water.");
                 game[posY][posX] = 2;
                 break;
             case 1:
-                System.out.println("You sunk a ship.");
+                System.out.println("\nYou sunk a ship.");
                 game[posY][posX] = 3;
                 shipsRemaining--;
                 break;
             case 2:
             case 3:
-                System.out.println("You have shot here before.");
+                System.out.println("\nYou have shot here before.");
                 break;
         }
     }
