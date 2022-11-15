@@ -61,35 +61,60 @@ public class App {
     }
 
     static int[] requestParameters() {
-        int[] parameters = new int[4]; // [0] Height, [1] Width, [2] Ship amount, [3] Difficulty
+        int[] parameters = { -1, -1, -1, -1 }; // [0] Height, [1] Width, [2] Ship amount, [3] Difficulty
         do {
             System.out.print("Enter the board width: ");
-            parameters[0] = reader.nextInt();
-            if (parameters[0] <= 0) {
-                System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Width out of range");
+            try {
+                parameters[0] = reader.nextInt();
+                if (parameters[0] <= 0) {
+                    System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Width out of range");
+                }
+            } catch (Exception e) {
+                System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Invalid number!");
+            } finally {
+                reader.nextLine();
             }
         } while (parameters[0] <= 0);
         do {
             System.out.print("Enter board height: ");
-            parameters[1] = reader.nextInt();
-            if (parameters[1] <= 0) {
-                System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Height out of range");
+            try {
+                parameters[1] = reader.nextInt();
+                if (parameters[1] <= 0) {
+                    System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Height out of range");
+                }
+            } catch (Exception e) {
+                System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Invalid number!");
+            } finally {
+                reader.nextLine();
             }
         } while (parameters[1] <= 0);
         do {
             System.out.print("Introduce ship amount [1-" + (parameters[0] * parameters[1]) + "]: ");
-            parameters[2] = reader.nextInt();
-            if (parameters[2] == 0 || parameters[2] > (parameters[0] * parameters[1])) {
-                System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Amount out of range [1-"
-                        + (parameters[0] * parameters[1]) + "]");
+            try {
+                parameters[2] = reader.nextInt();
+                if (parameters[2] == 0 || parameters[2] > (parameters[0] * parameters[1])) {
+                    System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Amount out of range [1-"
+                            + (parameters[0] * parameters[1]) + "]");
+                }
+            } catch (Exception e) {
+                System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Invalid number!");
+            } finally {
+                reader.nextLine();
             }
         } while (parameters[2] == 0 || parameters[2] > (parameters[0] * parameters[1]));
         do {
             System.out.print("Introduce difficulty [0-3]: ");
-            parameters[3] = reader.nextInt();
-            if (parameters[3] < 0 || parameters[3] > 3) {
-                System.out
-                        .println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Difficulty out of range [0-3]");
+            try {
+                parameters[3] = reader.nextInt();
+                if (parameters[3] < 0 || parameters[3] > 3) {
+                    System.out
+                            .println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET
+                                    + "Difficulty out of range [0-3]");
+                }
+            } catch (Exception e) {
+                System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Invalid number!");
+            } finally {
+                reader.nextLine();
             }
         } while (parameters[3] < 0 || parameters[3] > 3);
         System.out.println();
@@ -171,22 +196,35 @@ public class App {
     }
 
     static void shoot() {
-        int posX, posY;
+        int posX = -1, posY = -1;
         do {
             System.out.print("Enter the X coordinate of the shot: ");
-            posX = reader.nextInt() - 1;
-            if (posX >= game[0].length || posX < 0) {
-                System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Coordinate out of range [1-"
-                        + game[0].length);
+            try {
+                posX = reader.nextInt() - 1;
+                if (posX >= game[0].length || posX < 0) {
+                    System.out
+                            .println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Coordinate out of range [1-"
+                                    + game[0].length + "]");
+                }
+            } catch (Exception e) {
+                System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Invalid number!");
+            } finally {
+                reader.nextLine();
             }
         } while (posX >= game[0].length || posX < 0);
-
         do {
             System.out.print("Enter the Y coordinate of the shot: ");
-            posY = reader.nextInt() - 1;
-            if (posY >= game.length || posY < 0) {
-                System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Coordinate out of range [1-"
-                        + game.length);
+            try {
+                posY = reader.nextInt() - 1;
+                if (posY >= game.length || posY < 0) {
+                    System.out
+                            .println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Coordinate out of range [1-"
+                                    + game.length + "]");
+                }
+            } catch (Exception e) {
+                System.out.println(ConsoleColors.RED + "Error: " + ConsoleColors.RESET + "Invalid number!");
+            } finally {
+                reader.nextLine();
             }
         } while (posY >= game.length || posY < 0);
         shotsRemaining--;
